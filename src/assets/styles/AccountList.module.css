@@ -1,0 +1,21 @@
+table {
+    border-collapse: collapse;
+    margin: 1rem;
+  }
+  
+  th {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+  
+  td:first-child {
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,23 @@
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.profileContainer > div:first-child {
+  margin-right: 10px;
+  width: 200px;
+}
+
+.walletContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
