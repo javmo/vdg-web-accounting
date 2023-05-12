@@ -2,12 +2,55 @@ import { useState } from 'react';
 import { Checkbox, Radio, Switch } from 'pretty-checkbox-react';
 import './Checkbox1.css';
 
-const Checkbox1 =() => {
-    return  <div className='div-checkbox1'>
-                <Checkbox className='div-checkbox1-check'>Pasivos</Checkbox>
-                <Checkbox className='div-checkbox1-check'>Activos</Checkbox>
-                <Checkbox className='div-checkbox1-check'>Resultado</Checkbox>
-            </div>
+function Checkbox1(){   
+  const [isCheckedActivos, setIsCheckedActivos] = useState(false);
+  const [isCheckedPasivos, setIsCheckedPasivos] = useState(false);
+  const [isCheckedResultado, setIsCheckedResultado] = useState(false);
+
+  const handleCheckboxChangeActivos = (event) => {
+    setIsCheckedActivos(event.target.checked);
+  }
+  const handleCheckboxChangePasivos = (event) => {
+    setIsCheckedPasivos(event.target.checked);
+  }
+  const handleCheckboxChangeResultado = (event) => {
+    setIsCheckedResultado(event.target.checked);
+  }
+
+    return(  
+        <form className='checkbox-form'> 
+            <label className="checkbox-label">
+                <input
+                    type="checkbox"
+                    checked={isCheckedPasivos}
+                    onChange={handleCheckboxChangePasivos}
+                    className="checkbox-input"
+                ></input>
+                <span className="checkmark"></span>
+                Pasivos
+            </label>
+            <label className="checkbox-label">
+                <input
+                    type="checkbox"
+                    checked={isCheckedActivos}
+                    onChange={handleCheckboxChangeActivos}
+                    className="checkbox-input"
+                ></input>
+                <span className="checkmark"></span>
+                Activos
+            </label>
+            <label className="checkbox-label">
+                <input
+                    type="checkbox"
+                    checked={isCheckedResultado}
+                    onChange={handleCheckboxChangeResultado}
+                    className="checkbox-input"
+                ></input>
+                <span className="checkmark"></span>
+                Resultado
+            </label>
+        </form>
+            );
         
 }
 

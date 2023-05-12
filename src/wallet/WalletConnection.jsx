@@ -7,17 +7,16 @@ import { Toaster, toast } from 'react-hot-toast';
 import * as Icons from "react-icons/fa";
 
 const WalletConnection = () => {
-  const { connectWallet, account, balance, type } = useWeb3();
-
+  const { connectWallet, account, balance} = useWeb3();
+  
   const handleConnectWallet = async () => {
     await connectWallet();
-    console.log(handleConnectWallet);
-  };  
-
+  };
  
   return (
     <div className='div-wallet'>
       {account && (
+      <div>
       <div className='div-wallet-info'>
         
         <span className='div-wallet-info-p'>Wallet: {account}</span>
@@ -30,6 +29,11 @@ const WalletConnection = () => {
         
         <span className='div-wallet-info-p'>Balance: {balance} ETH</span>
 
+
+      </div>
+      <div className='div-wallet-info'>
+        <button className='btn-wallet' onClick={handleConnectWallet}>Cambiar de cuenta</button>
+      </div>
       </div>
       )}
       
