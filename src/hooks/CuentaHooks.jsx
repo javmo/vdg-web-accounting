@@ -12,6 +12,7 @@ const useAccountsApi = () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/account`);
         setAccounts(response.data);
+        console.log(response.data)
       } catch (error) {
         setError(error);
       }
@@ -21,10 +22,10 @@ const useAccountsApi = () => {
     fetchData();
   }, []);
 
-  const addAccount = async ({ name, accountType, balance, description }) => {
+  const addAccount = async ({ name, owner }) => {
     setIsLoading(true);
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account`, { name, accountType, balance, description });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/addAssetAccount`, { name, owner });
       setIsLoading(false);
       return response.data; // Devuelve la información de la transacción
     } catch (error) {

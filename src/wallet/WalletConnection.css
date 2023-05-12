@@ -1,0 +1,46 @@
+.btn-wallet {
+  border: none;
+  background: transparent;
+  padding: 6px 16px;
+  font-size: 1.1rem;
+  color: white;
+  background: rgb(255, 120, 10);
+  border-radius: 5px;
+  transition: 0.3s all ease-out;
+  cursor: pointer;
+}
+
+.btn-wallet:hover {
+  background:  rgb(175, 85, 0);;
+}
+
+
+.walletInfo {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.div-wallet{
+  justify-content: end;
+  text-align: center;
+  display: flex;
+}
+
+.div-wallet-info{
+  justify-content: end;
+  text-align: center;
+  display: flex;
+  padding-right: 20px;  
+}
+
+.div-wallet-info-p{
+  padding-right: 20px;  
+}
+
+.btn-wallet-copy{
+  padding-right: 20px; 
+}

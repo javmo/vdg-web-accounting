@@ -14,7 +14,7 @@ export const useWeb3 = () => {
   }, []);
 
   const connectWallet = async () => {
-    if (!web3) return;
+    if (web3) return;
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     setAccount(accounts[0]);
     updateBalance(accounts[0]);
@@ -26,7 +26,7 @@ export const useWeb3 = () => {
     const balanceEth = web3.utils.fromWei(balanceWei, 'ether');
     setBalance(balanceEth);
   };
-
+  
   return {
     connectWallet,
     account,

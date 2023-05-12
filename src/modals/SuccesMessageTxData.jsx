@@ -6,7 +6,7 @@ import {
   SuccessIcon,
   TxData,
   customStyles,
-} from '../../assets/styles/SuccesMessageTxDataStyles';
+} from './SuccesMessageTxDataStyles';
 
 const SuccesMessageTxData = ({ successMessage }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
