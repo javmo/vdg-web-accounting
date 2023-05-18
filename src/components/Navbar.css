@@ -1,0 +1,103 @@
+ .Cabecera {
+      background-color: black;
+      width: 100%;
+      padding: 1em; 
+
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      color: white;
+  } 
+  
+  .navbar-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 10rem;
+  }
+  
+  .nav-items {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    /* width: 70vw; */
+    justify-content: flex-end;
+    margin-right: 2rem;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+  }
+  
+  .nav-item a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    margin-right: 2rem;
+    padding: 6px 16px;
+    border-radius: 5px;
+  }
+
+  .nav-item-wallet{
+    align-self: center;
+  }
+  
+  .nav-item a:hover {
+    background: rgb(0, 212, 212);
+  }
+
+  .navbar-button{
+    display: none;
+    cursor: pointer;
+    background-color: rgb(2, 1, 1);
+  }
+  .navbar-svg{
+    width: 2em;
+    height: 2em;
+  }
+  
+
+  @media screen and (max-width:480px) {
+   
+    .navbar-button{
+      display: block;
+    }
+    
+    .navbar{
+      width: 100%;
+  
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      height: 0vh;
+      opacity: 0;
+      overflow: hidden;
+      transition: all .5s ease;
+    }
+  
+    .navbar.isActive{
+      display: flex;
+      height: 50vh;
+      opacity: 1;
+    }
+  
+    .nav-items {
+      flex-direction: column;
+      width: 90%;
+    }
+    
+    .nav-item-wallet{
+      
+      width: 90%;
+    }
+    
+
+  }
