@@ -1,8 +1,6 @@
 .div-form{
-  align-content: center;
-  border: 1px solid;
-  margin: 10%;
-  margin-top: 5%
+  width: 100vw;
+  height: 90vh; 
 }
 
 .form-box{
@@ -24,6 +22,16 @@
   margin-top: 10px;
   border-bottom: 1px solid;
 
+}
+
+.form-input-owner {
+  width: 90%;
+  height: 30px;
+  padding: 0.5em 1em;
+  display: flex;
+  margin-top: 10px;
+  border-bottom: 1px solid;
+  /*display: none;*/
 }
 
 

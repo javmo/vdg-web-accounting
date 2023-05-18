@@ -15,42 +15,32 @@ export const navItems = [
   ];
   
   export const cuentasDropdown = [
+    
     {
       id: 1,
-      title: "Crear",
-      path: "./CrearCuenta",
-      cName: "submenu-item",
-    },
-    {
-      id: 2,
       title: "Listar",
       path: "./ListaCuentas",
       cName: "submenu-item",
     },
     {
-      id: 3,
+      id: 2,
       title: "Buscar",
-      path: "./BuscarCuenta",
+      path: "./ConfigCuenta",
       cName: "submenu-item",
     },
    
   ];
 
   export const asientosDropdown = [
+    
     {
       id: 1,
-      title: "Crear",
-      path: "./CrearAsiento",
-      cName: "submenu-item",
-    },
-    {
-      id: 2,
       title: "Listar",
       path: "./ListaAsientos",
       cName: "submenu-item",
     },
     {
-      id: 3,
+      id: 2,
       title: "Buscar",
       path: "./BuscarAsiento",
       cName: "submenu-item",

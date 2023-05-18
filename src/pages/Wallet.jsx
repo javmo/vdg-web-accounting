@@ -5,6 +5,7 @@ const Wallet= () => {
     
     return <div className="wallet-div">
         <WalletConnection/>
+        
         </div>
 }
 

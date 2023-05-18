@@ -91,9 +91,13 @@
   
     .nav-items {
       flex-direction: column;
+      width: 90%;
     }
     
-    
+    .nav-item-wallet{
+      
+      width: 90%;
+    }
     
 
   }
