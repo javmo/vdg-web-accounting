@@ -23,7 +23,7 @@ const CrearCuenta = () => {
     }, []);
  
    
-
+    
     
     //Se completa el formulario con datos segun el estado de los input
     const [formData, setFormData] = useState({
