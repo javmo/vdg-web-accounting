@@ -6,26 +6,22 @@ import * as Icons from "react-icons/fa";
 import { useEther } from "../hooks/useEther";
 
 
-const WalletConnection = () => {
+const WalletConnection = (props) => {
   
   const { checkMetaMaskConnection, connectHandler, account, balance, conectado} = useEther();
-  
-  const handleConnectWallet = async () => {
-    await connectHandler();
+  const [displayedAccount, setDisplayedAccount] = useState('');
+
+  const [wallet, setWallet] = useState('');
+  // Función para actualizar la wallet
+  const handleWalletChange = (newWallet) => {
+    setWallet(newWallet);
   };
 
-     
-  useEffect(() => {
-      const obtenerCuenta = async () => {
-          handleConnectWallet();         
-      };
-      obtenerCuenta();
-  }, []);
 
   useEffect(() => {
-    checkMetaMaskConnection();       
-    
-    }, []);
+    checkMetaMaskConnection();   
+    props.onWalletChange(account);
+  }, [account, props.onAccountChange]);
 
   return (
     <div className='div-wallet'>
@@ -34,17 +30,26 @@ const WalletConnection = () => {
      
       <div className='div-wallet-info'>
         
-        <span className='div-wallet-info-p'>Wallat: {account}</span>
+        <div className='div-wallet-copy'>
+          <span className='div-wallet-info-p'>
+            Wallet: <span className='wallet-account'>{account}</span>
+          </span>
 
-        <CopyToClipboard text={account}>
-            <button  className='btn-wallet-copy' title='Copy' onClick={() => toast("Address copiada", {position: 'botton-right'})}>
-              <Icons.FaRegCopy /> 
-            </button>
-        </CopyToClipboard>
-         
-        <span className='div-wallet-info-p'>Balance: {balance} ETH</span>
+          <CopyToClipboard text={account}>
+              <button  className='btn-wallet-copy' title='Copy' onClick={() => toast("Address copiada", {position: 'botton-right'})}>
+                <Icons.FaRegCopy /> 
+              </button>
+          </CopyToClipboard>
+        </div>
+        
+        <div className='balance-wrapper'>
+          <span className='balance-label'>Balance:</span>
+          <span className='balance-value'>{balance} ETH</span>
+        </div>
 
       </div>
+      
+
       )}
       
       <Toaster/>
@@ -54,6 +59,7 @@ const WalletConnection = () => {
          <div>
             <button className='btn-wallet' onClick={connectHandler}>Conectar Wallet</button>
          </div>
+
       )}
 
        

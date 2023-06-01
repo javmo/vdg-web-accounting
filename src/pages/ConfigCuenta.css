@@ -1,6 +1,7 @@
 .div-form{
   width: 100vw;
   height: 90vh; 
+  margin-top: 5%;
 }
 
 .form-box{
@@ -31,7 +32,7 @@
   display: flex;
   margin-top: 10px;
   border-bottom: 1px solid;
-  /*display: none;*/
+  display: none;
 }
 
 
@@ -41,12 +42,12 @@
   border: none;
   font-size: 1.1rem;
   color: white;
-  background: rgb(0, 212, 212);
+  background: rgb(10, 8, 124);
   border-radius: 5px;
   transition: 0.3s all ease-out;
   cursor: pointer;
 }
 
 .form-button:hover {
-  background:  rgb(0, 175, 175);;
+  background: rgb(3, 21, 59);
 }

@@ -27,7 +27,7 @@ export const useEther = () => {
             });
             await accountsChanged(res[0]);
             console.log("entro3")
-            
+            setConectado(true);
                 
         } catch (err) {
             console.error(err);
@@ -76,7 +76,18 @@ export const useEther = () => {
             if (accounts.length !== 0) {
                 const account = accounts[0];
                 console.log("Found an authorized account:", account);
+                setAccount(account);
+                
+                const balance = await window.ethereum.request({
+                    method: "eth_getBalance",
+                    params: [account.toString(), "latest"],
+                });
+                console.log("balance: " + balance )
+                setBalance(ethers.formatEther(balance));
+                
                 setConectado(true);
+
+
             } else {
                 console.log("No authorized account found");
                 

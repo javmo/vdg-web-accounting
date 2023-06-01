@@ -3,24 +3,27 @@ import axios from 'axios';
 
 const useAccountsApi = () => {
   const [accounts, setAccounts] = useState([]);
+  const [name, setName] = useState();
+  const [balance, setBalance] = useState();
+  const [type, setType] = useState();
+  const [selectAccount, setAccount] = useState();
+  const [contract, setContract] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     //setIsLoading(true);
-  //     try {
-  //       const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/account`);
-  //       setAccounts(response.data);
-  //       console.log(response.data)
-  //     } catch (error) {
-  //       setError(error);
-  //     }
-  //     //setIsLoading(false);
-  //   };
-
-  //   fetchData();
-  // }, []);
+   const fetchData = async () => {
+       setIsLoading(true);
+       try {
+         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/account`);
+         setAccounts(response.data);
+         console.log(response.data)
+       } catch (error) {
+         setError(error);
+       }
+       setIsLoading(false);
+     };
+    
 
   const addAssetAccount = async ({ name, owner }) => {
     console.log("name " + name + " owner: " + owner)
@@ -32,6 +35,7 @@ const useAccountsApi = () => {
     } catch (error) {
       setError(error);
       setIsLoading(false);
+      throw error;
     }
   };
 
@@ -44,6 +48,7 @@ const useAccountsApi = () => {
     } catch (error) {
       setError(error);
       setIsLoading(false);
+      throw error;
     }
   };
 
@@ -52,25 +57,51 @@ const useAccountsApi = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/addResultAccount`, { name, owner });
       setIsLoading(false);
+      //console.log("response.data: " + response.data)
       return response.data; // Devuelve la información de la transacción
     } catch (error) {
+      console.log("response.error: " + error);
       setError(error);
       setIsLoading(false);
+      throw error;
     }
   };
 
-  const getAccountByName = async (name) => {
+  const getAccountByAddress = async (address) => {
     setIsLoading(true);
+    console.log("address hooks: " + address)
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/account/${name}`);
-      return response.data;
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/account/address/${address}`);
+      const { name, balance, type, account, contract } = response.data;
+      setName(name);
+      setBalance(balance);
+      setType(type);
+      setAccount(account);
+      setContract(contract);
+      console.log("response try:" + response)
     } catch (error) {
+      console.log("response error: " + error)
       setError(error);
+      setIsLoading(false);
+      throw error;
     }
     setIsLoading(false);
   };
 
-  return { accounts, isLoading, error, addAssetAccount, addLiabilityAccount, addResultAccount, getAccountByName };
+  return { 
+    name,
+    balance,
+    type,
+    selectAccount,
+    contract, 
+    accounts, 
+    isLoading, 
+    error, 
+    addAssetAccount, 
+    addLiabilityAccount, 
+    addResultAccount, 
+    getAccountByAddress, 
+    fetchData};
 };
 
 export default useAccountsApi;

@@ -1,5 +1,5 @@
  .Cabecera {
-      background-color: black;
+      background: linear-gradient(to bottom, #0066cc, #00008b);
       width: 100%;
       padding: 1em; 
 
@@ -11,23 +11,48 @@
       color: white;
   } 
   
+  .navbar{
+    margin-right: 10%;
+  }
+
   .navbar-logo {
     color: white;
     text-decoration: none;
+    height: 10px;
     font-size: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 10rem;
+    filter: brightness(1); /* Valor inicial de brillo */
+    transition: filter 0.3s; /* Transición suave para el efecto */
+  }
+
+  .navbar-logo:hover {
+    filter: brightness(1.2); /* Valor de brillo al pasar el mouse */
+  }
+
+  .navbar-src-logo{
+    margin-top: 20%;
   }
   
+  .nav-wallet{
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 10rem;
+  }
+
+
   .nav-items {
     display: flex;
     list-style: none;
     text-align: center;
     /* width: 70vw; */
     justify-content: flex-end;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
   }
   
   .nav-item {
@@ -50,7 +75,7 @@
   }
   
   .nav-item a:hover {
-    background: rgb(0, 212, 212);
+    background:  rgb(3, 21, 59);
   }
 
   .navbar-button{
@@ -64,7 +89,7 @@
   }
   
 
-  @media screen and (max-width:480px) {
+  @media screen and (max-width:1000px) {
    
     .navbar-button{
       display: block;
@@ -91,11 +116,6 @@
   
     .nav-items {
       flex-direction: column;
-      width: 90%;
-    }
-    
-    .nav-item-wallet{
-      
       width: 90%;
     }
     

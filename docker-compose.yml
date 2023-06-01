@@ -10,6 +10,7 @@ services:
     image: javmo94/vdg-api-accounting:develop
     ports:
       - '4000:4000'
+    command: ["npm", "run", "deploy-and-start"]
     environment: # Añade la sección environment
       - RPC_HOST=ganache
       - RPC_PORT=8545
