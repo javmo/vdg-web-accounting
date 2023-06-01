@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import useAccounts from '../hooks/CuentaHooks';
-import './ListaCuentas.css'
+import useAsientos from '../../hooks/AsientoHooks';
+import './ListaAsientos.css'
 import DataTable from 'react-data-table-component';
 
 
-const ListaCuentas =() => {
+const ListaAsientos =() => {
   
-  const { accounts, isLoading, error, fetchData } = useAccounts();
+  const { asientos, isLoading, error, fetchData } = useAsientos();
 
   useEffect(() => {
     fetchData();
@@ -21,40 +21,33 @@ const ListaCuentas =() => {
 
   const columns = [
     {
-      name:"Nombre",
-      selector: row => row.name,
+      name:"Descripcion",
+      selector: row => row.description,
       sortable:true,
-      width:"20%"
+    //  width:"25%"
     },
     {
-      name:"Tipo",
-      selector: row => row.type,
+      name:"Cuenta debito",
+      selector: row => row.debitAccountContract,
       sortable:true,
-      width:"10%"
+    //   width:"25%"
     },
     {
-      name:"Balance",
-      selector: row => row.balance,
+      name:"Cuenta credito",
+      selector: row => row.creditAccountContract,
       sortable:true,
-      width:"10%"
-    },
-    {
-      name:"Cuenta",
-      selector: row => row.account,
-      sortable:true,
-      width:"25%"
-      
+    //  width:"25%"
     },
     {
       name:"Contrato",
       selector: row => row.contract,
       sortable:true,
-      width:"25%"
+    //  width:"25%"
       
-    }
+    },
   ];
   
-  const data = accounts
+  const data = asientos
   
   return(
     <div className='container-table'>
@@ -73,4 +66,4 @@ const ListaCuentas =() => {
   
 };
 
-export default ListaCuentas;
+export default ListaAsientos;

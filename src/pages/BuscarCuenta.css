@@ -1,0 +1,28 @@
+.form-item {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Permite que el input se expanda y ocupe el espacio disponible */
+    width: 100%; /* Asegura que el input ocupe todo el ancho disponible */
+    max-width: 600px; /* Establece un ancho máximo opcional para evitar que se vuelva demasiado ancho en pantallas grandes */
+}
+
+.form-label {
+  margin-right: 10px;
+  font-weight: bold;
+  text-align: right;
+  width: 100px; /* Ajusta el ancho según tus necesidades */
+}
+
+.form-input{
+
+    flex: 1; /* Permite que el input se expanda y ocupe el espacio disponible */
+    width: 100%; /* Asegura que el input ocupe todo el ancho disponible */
+    max-width: 500px; /* Establece un ancho máximo opcional para evitar que se vuelva demasiado ancho en pantallas grandes */
+}
+
+@media (max-width: 768px) {
+    .form-item  {
+      width: 300px; /* Ajusta el ancho del label para pantallas más pequeñas */
+      display: table-column;
+    }
+  }

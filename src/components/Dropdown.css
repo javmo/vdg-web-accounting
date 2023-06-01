@@ -8,13 +8,13 @@
   }
   
   .cuentas-submenu li {
-    background: rgb(0, 212, 212);
+    background: rgb(10, 8, 124);
     cursor: pointer;
     
   }
   
   .cuentas-submenu li a:hover {
-    background: rgb(0, 175, 175);
+    background: rgb(3, 21, 59);
     width: 100%;
   }
   

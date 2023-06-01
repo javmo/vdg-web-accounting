@@ -8,16 +8,24 @@
   }
   
   .asientos-submenu li {
-    background: rgb(0, 212, 212);
+    background: rgb(10, 8, 124);
     cursor: pointer;
 
   }
   
   .asientos-submenu li a:hover {
-    background: rgb(0, 175, 175);
+    background:  rgb(3, 21, 59);
     width: 100%;
   }
   
+  .asientos-submenu li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    /* margin-right: 2rem; */
+    padding: 6px 16px;
+    border-radius: 5px;
+  }
   .asientos-submenu.clicked {
     display: none;
   }
