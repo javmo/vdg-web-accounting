@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # Construye la aplicación de React para producción
-RUN npm run build
+RUN CI=false npm run build
 
 # Utiliza una imagen base de Nginx (Alpine) para servir la aplicación de React
 FROM nginx:1.21-alpine
