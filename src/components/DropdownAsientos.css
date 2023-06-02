@@ -1,0 +1,48 @@
+.asientos-submenu {
+    width: 10rem;
+    position: absolute;
+    top: 62px;
+    list-style: none;
+    text-align: start;
+    z-index: 1;
+  }
+  
+  .asientos-submenu li {
+    background: rgb(10, 8, 124);
+    cursor: pointer;
+
+  }
+  
+  .asientos-submenu li a:hover {
+    background:  rgb(3, 21, 59);
+    width: 100%;
+  }
+  
+  .asientos-submenu li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    /* margin-right: 2rem; */
+    padding: 6px 16px;
+    border-radius: 5px;
+  }
+  .asientos-submenu.clicked {
+    display: none;
+  }
+  
+  .asientos-item {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    padding: 16px;
+  }
+
+  @media screen and (max-width:480px) {
+
+    .asientos-submenu {
+      top: 223px;
+      right: 50px;
+     }
+  }

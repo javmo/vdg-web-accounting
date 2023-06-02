@@ -13,6 +13,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Debug build
+      run: |
+        node --version
+        npm --version
+        CI=false npm ci
+        CI=false npm run build
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
@@ -28,7 +35,7 @@ jobs:
         context: .
         push: true
         tags: javmo94/vdg-web-accounting:develop
-        
+
     - name: Notify Slack on Success
       if: success()
       run: |

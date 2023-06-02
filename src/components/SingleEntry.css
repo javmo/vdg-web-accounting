@@ -1,0 +1,32 @@
+.singleEntry {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    
+}
+
+.singleEntry th, .singleEntry td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.singleEntry th:nth-child(1), .singleEntry td:nth-child(1) {
+    width: 30%;
+}
+
+.singleEntry th:nth-child(2), .singleEntry td:nth-child(2) {
+    width: 15%;
+}
+
+.singleEntry th:nth-child(3), .singleEntry td:nth-child(3) {
+    width: 15%;
+}
+
+.singleEntry a {
+    color: #007bff;
+    text-decoration: none;
+}
+
