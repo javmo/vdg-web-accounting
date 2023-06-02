@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import useAccounts from '../hooks/CuentaHooks';
 import './ListaCuentas.css'
 import DataTable from 'react-data-table-component';
+import { Link } from 'react-router-dom';
 
 
 const ListaCuentas =() => {
@@ -24,7 +25,7 @@ const ListaCuentas =() => {
       name:"Nombre",
       selector: row => row.name,
       sortable:true,
-      width:"20%"
+      width:"25%"
     },
     {
       name:"Tipo",
@@ -40,16 +41,16 @@ const ListaCuentas =() => {
     },
     {
       name:"Cuenta",
-      selector: row => row.account,
+      selector: row => `${row.account.slice(0, 4)}...${row.account.slice(-4)}`, 
       sortable:true,
-      width:"25%"
+      //width:"30%"
       
     },
     {
       name:"Contrato",
-      selector: row => row.contract,
+      selector: row => `${row.contract.slice(0, 4)}...${row.contract.slice(-4)}`,  
       sortable:true,
-      width:"25%"
+      //width:"30%"
       
     }
   ];
