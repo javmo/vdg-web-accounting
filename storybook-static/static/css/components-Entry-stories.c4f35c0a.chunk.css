@@ -1,0 +1,51 @@
+.entry {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.entry th, .entry td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.entry th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.entry th:nth-child(1), .entry td:nth-child(1) {
+    width: 20%;
+}
+
+.entry th:nth-child(2), .entry td:nth-child(2) {
+    width: 50%;
+}
+
+.entry th:nth-child(3), .entry td:nth-child(3) {
+    width: 15%;
+}
+
+.entry th:nth-child(4), .entry td:nth-child(4) {
+    width: 15%;
+}
+
+.entry a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.entry a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/*# sourceMappingURL=components-Entry-stories.c4f35c0a.chunk.css.map*/
