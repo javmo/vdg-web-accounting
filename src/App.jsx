@@ -6,6 +6,8 @@ import BuscarCuenta from './pages/BuscarCuenta';
 import ListaCuentas from './pages/ListaCuentas';
 import ConfigCuenta from './pages/ConfigCuenta';
 import Cuenta from './pages/Cuenta';
+import ContabilidadCuenta from './pages/Contabilidad/ContabilidadCuenta';
+import ContabilidadGeneral from './pages/Contabilidad/ContabilidadGeneral';
 import WalletConnection from './wallet/WalletConnection'
 import NuevoAsiento from './pages/Asientos/AltaAsiento'
 import ConfigAsiento from './pages/Asientos/ConfigAsiento'
@@ -39,6 +41,9 @@ const App = () => {
         <Route path='/NuevoAsiento' element={<NuevoAsiento wallet={wallet}/> } ></Route>
         <Route path='/ConfigAsiento' element={<ConfigAsiento wallet={wallet}/> } ></Route>
         <Route path='/ListaAsientos' element={<ListaAsientos/> } ></Route>
+        <Route path='/ContabilidadCuenta' element={<ContabilidadCuenta wallet={wallet}/> } ></Route>
+        <Route path='/ContabilidadGeneral' element={<ContabilidadGeneral wallet={wallet}/> } ></Route>
+
         ListaAsientos
         <Route path='/' element={<Inicio/>}></Route>
       </Routes>

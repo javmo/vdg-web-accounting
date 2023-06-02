@@ -70,5 +70,17 @@ export const navItems = [
       path: "./ListaAsientos",
       cName: "submenu-item",
     },
+    {
+      id: '4', 
+      title: 'Movimientos contables por cuenta',
+      path: '/ContabilidadCuenta',
+      cName: 'nav-text' 
+    },
+    {
+      id: '5', 
+      title: 'Movimientos Contables',
+      path: '/ContabilidadGeneral',
+      cName: 'nav-text' 
+    }
    
   ];
