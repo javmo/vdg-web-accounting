@@ -6,24 +6,25 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  REGION: us-central1
-  CLUSTER_NAME: autopilot-cluster-1
-  IMAGE_NAME: vdg-web-accounting
-  IMAGE_TAG: ${{ github.sha }}
+  GKE_CLUSTER: autopilot-cluster-1   
+  GKE_ZONE: us-central1   
+  DEPLOYMENT_NAME: nginx-1 
+  REPOSITORY: vdg-web-accounting 
+  IMAGE: vdg-web-accounting-1 
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v3
+        uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
       - name: Configure Docker CLI
         run: |
@@ -31,10 +32,10 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
-          docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}:${{ github.sha }} .
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}:${{ github.sha }}
 
       - name: Update Kubernetes deployment
         run: |
-            gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region=${{ env.REGION }}
-            kubectl set image deployment/nginx-1 vdg-web-accounting-1=gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GKE_ZONE }}
+          kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.IMAGE }}=gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}:${{ github.sha }}
