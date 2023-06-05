@@ -56,5 +56,6 @@ jobs:
 
       - name: Update Kubernetes deployment
         run: |
+          gcloud auth activate-service-account --key-file ${{ secrets.GCP_CREDENTIALS }}
           gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GKE_ZONE }}
           kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.IMAGE }}=javmo94/${{ env.REPOSITORY }}:${{ github.sha }}
