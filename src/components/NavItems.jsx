@@ -76,11 +76,5 @@ export const navItems = [
       path: '/ContabilidadCuenta',
       cName: 'nav-text' 
     },
-    {
-      id: '5', 
-      title: 'Movimientos Contables',
-      path: '/ContabilidadGeneral',
-      cName: 'nav-text' 
-    }
    
   ];
