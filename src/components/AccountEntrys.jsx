@@ -62,6 +62,7 @@ const AccountEntrys = ({ cuenta, type, nombreCuenta, singleEntries, contract }) 
         </tbody>
         <tfoot>
           <tr>
+            <td></td>
             <td>Sub-Total:</td>
             <td>{totalDebe}</td>
             <td>{totalHaber}</td>
