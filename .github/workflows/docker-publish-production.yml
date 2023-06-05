@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GKE_CLUSTER: autopilot-cluster-1   
-  GKE_ZONE: us-central1   
+  GKE_ZONE: us-central1-a 
   DEPLOYMENT_NAME: nginx-1 
   REPOSITORY: vdg-web-accounting 
   IMAGE: vdg-web-accounting-1 
@@ -63,4 +63,5 @@ jobs:
       - name: Update Kubernetes deployment
         run: |
             gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GKE_ZONE }}
+            export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GCP_CREDENTIALS_PATH }}
             kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.IMAGE }}=javmo94/${{ env.REPOSITORY }}:${{ github.sha }}
