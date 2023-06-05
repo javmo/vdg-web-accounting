@@ -22,26 +22,31 @@ const ContabilidadCuenta = (props) => {
   useEffect(() => {
     // Cuando se tenga la cuenta y las entradas, procesa las entradas
     if(!isLoading && entries) {
-      const processedEntries = entries.map(entry => {
-        // Objeto para el registro procesado
+      const processedEntries = entries.reduce((acc, entry) => {
+        
         let record = {
           importeDebe: '',
           importeHaber: '',
           hash: entry.hash,
           contractAddress: entry.contract
         };
-
+  
         if(entry.debitAccountContract === contract) {
           record.importeDebe = entry.amount;
         }
-
+  
         if(entry.creditAccountContract === contract) {
           record.importeHaber = entry.amount;
         }
-
-        return record;
-      });
-
+  
+        // Si importeDebe o importeHaber se establecieron, guardar el registro.
+        if(record.importeDebe || record.importeHaber) {
+          acc.push(record);
+        }
+  
+        return acc;
+      }, []);
+  
       setRecords(processedEntries);
     }
   }, [isLoading, entries, contract]);
