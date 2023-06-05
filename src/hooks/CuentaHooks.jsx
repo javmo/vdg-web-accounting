@@ -88,6 +88,27 @@ const useAccountsApi = () => {
     setIsLoading(false);
   };
 
+  const getAccountByContract = async (contractAddress) => {
+    setIsLoading(true);
+    console.log("address hooks: " + contractAddress)
+    try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/account/contract/${contractAddress}`);
+        const { name, balance, type, account, contract } = response.data;
+        console.log("response try:" + response)
+        
+        // Retorna un objeto con los datos que recuperaste
+        return { name, balance, type, account, contract };
+    } catch (error) {
+        console.log("response error: " + error)
+        setError(error);
+        setIsLoading(false);
+        throw error;
+    } finally {
+        setIsLoading(false);
+    }
+};
+
+
   return { 
     name,
     balance,
@@ -101,6 +122,7 @@ const useAccountsApi = () => {
     addLiabilityAccount, 
     addResultAccount, 
     getAccountByAddress, 
+    getAccountByContract,
     fetchData};
 };
 
