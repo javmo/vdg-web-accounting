@@ -6,11 +6,13 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
   GKE_CLUSTER: autopilot-cluster-1   
   GKE_ZONE: us-central1   
   DEPLOYMENT_NAME: nginx-1 
   REPOSITORY: vdg-web-accounting 
   IMAGE: vdg-web-accounting-1 
+
 
 jobs:
   deploy:
@@ -20,10 +22,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
+
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
 
       - name: Set up GKE credentials
         uses: google-github-actions/get-gke-credentials@v0
@@ -31,8 +36,10 @@ jobs:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
 
+
       - name: Build and push Docker image
         run: |
+
           docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}:${{ github.sha }} .
           docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}:${{ github.sha }}
 
@@ -40,3 +47,4 @@ jobs:
         run: |
           gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GKE_ZONE }}
           kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.IMAGE }}=gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}:${{ github.sha }}
+

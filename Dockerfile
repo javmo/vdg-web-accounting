@@ -1,5 +1,5 @@
 # Utiliza una imagen base oficial de Node.js (Alpine)
-FROM node:14-alpine as build
+FROM node:14-alpine
 
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app
@@ -13,20 +13,8 @@ RUN npm ci
 # Copia el resto del código fuente al directorio de trabajo
 COPY . .
 
-# Construye la aplicación de React para producción
-RUN CI=false npm run build
+# Expone el puerto 3000 para que la aplicación sea accesible
+EXPOSE 3000
 
-# Utiliza una imagen base de Nginx (Alpine) para servir la aplicación de React
-FROM nginx:1.21-alpine
-
-# Copia la configuración de Nginx (si es necesario)
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copia los archivos de la aplicación construida al directorio predeterminado de Nginx
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Expone el puerto 80 para que la aplicación sea accesible
-EXPOSE 80
-
-# Inicia Nginx en modo daemon
-CMD ["nginx", "-g", "daemon off;"]
+# Inicia la aplicación
+CMD ["npm", "start"]
