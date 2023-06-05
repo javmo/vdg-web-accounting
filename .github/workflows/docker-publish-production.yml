@@ -59,9 +59,11 @@ jobs:
       # Snippet based on
       # https://github.com/actions/runner-images/blob/9753e7301e19e29b89b0622b811bbb9b3891d02e/images/linux/scripts/installers/google-cloud-sdk.sh#L9-L13.
       #
-      - name: Install gke-gcloud-auth-plugin
-        run: |-
-          sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v3
+        with:
+          version: 'latest'
+          service_account_key: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Update Kubernetes deployment
         run: |
