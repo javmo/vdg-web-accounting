@@ -35,7 +35,7 @@ const Entry = ({ cuentaDebito, nombreCuentaDebito, cuentaCredito, nombreCuentaCr
             </tbody>
             <tfoot>
                 <tr>
-                    <td colSpan="4">Hash: <a href={etherscanLink + 'tx/' + hash} target="_blank" rel="noopener noreferrer" className="highlighted">{shortenedHash}</a></td>
+                    <td colSpan="4">Hash: <a href={etherscanLink + 'tx/' + hash} target="_blank" rel="noopener noreferrer" className="highlighted">{hash}</a></td>
                 </tr>
                 <tr>
                     <td colSpan="4">ContractAddress: <a href={etherscanLink + 'address/' + contractAddress} target="_blank" rel="noopener noreferrer">{shorteneContract}</a></td>
