@@ -54,13 +54,15 @@ jobs:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
 
-      - name: Set up Google Cloud SDK
+      - name: Configure gcloud
         uses: google-github-actions/setup-gcloud@v0
         with:
-          version: 'latest'
           service_account_key: ${{ secrets.GCP_CREDENTIALS }}
-
+          project_id: ${{ env.PROJECT_ID }}
+  
+      - name: Set up GKE credentials
+        run: gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GKE_ZONE }}
+    
       - name: Update Kubernetes deployment
         run: |
-          gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} --region ${{ env.GKE_ZONE }}
-          kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.IMAGE }}=javmo94/${{ env.REPOSITORY }}:${{ github.sha }}
+           kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} ${{ env.IMAGE }}=javmo94/${{ env.REPOSITORY }}:${{ github.sha }}
