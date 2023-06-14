@@ -74,7 +74,7 @@ function Navbar() {
                       <Link to={item.path} title="Configuracion de la cuenta">{item.icon}</Link>
                     )}
                     
-                    {dropdown && <Dropdown />}
+                    {dropdown && <Dropdown toogleMenu={toogleMenu} />}
                 </li>
               );
             }
@@ -94,7 +94,7 @@ function Navbar() {
                       // Mostrar el icono en pantallas más grandes
                       <Link to={item.path} title="Configuracion de los asientos" >{item.icon}</Link>
                     )}
-                  {dropdownAsientos && <DropdownAsientos />}
+                  {dropdownAsientos && <DropdownAsientos toogleMenu={toogleMenu}/>}
                 </li>
               );
             }
@@ -114,7 +114,7 @@ function Navbar() {
                       // Mostrar el icono en pantallas más grandes
                       <Link to={item.path} title="Reporte contable" >{item.icon}</Link>
                     )}
-                  {dropdownMovimientos && <DropdownMovimientos />}
+                  {dropdownMovimientos && <DropdownMovimientos toogleMenu={toogleMenu}/>}
                 </li>
               );
             }

@@ -39,20 +39,7 @@ export const navItems = [
       title: "Listar",
       path: "./ListaCuentas",
       cName: "submenu-item",
-    },
-    // {
-    //   id: 2,
-    //   title: "Configurar",
-    //   path: "./ConfigCuenta",
-    //   cName: "submenu-item",
-    // },
-    // {
-    //   id: 4,
-    //   title: "Cuenta",
-    //   path: "./Cuenta",
-    //   cName: "submenu-item",
-    // },
-    
+    }, 
    
   ];
 

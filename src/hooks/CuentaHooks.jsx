@@ -52,10 +52,10 @@ const useAccountsApi = () => {
     }
   };
 
-  const addResultAccount = async ({ name, owner }) => {
+  const addResultAccount = async ({ name, owner, isExpense }) => {
     setIsLoading(true);
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/addResultAccount`, { name, owner });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/addResultAccount`, { name, owner, isExpense });
       setIsLoading(false);
       //console.log("response.data: " + response.data)
       return response.data; // Devuelve la información de la transacción
