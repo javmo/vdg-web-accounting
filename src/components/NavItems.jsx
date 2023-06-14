@@ -1,6 +1,6 @@
 import { FaClipboardList } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWallet, faTableColumns } from '@fortawesome/free-solid-svg-icons';
+import { faWallet, faTableColumns, faMoneyBill, faBook, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -15,7 +15,13 @@ export const navItems = [
       id: 2,
       title: "Asientos",
       cName: "nav-item",
-      icon: <FontAwesomeIcon icon={faTableColumns} size="2x" style={{ marginRight: '8px' }}/>,
+      icon: <FontAwesomeIcon icon={faBook} size="2x" style={{ marginRight: '8px' }}/>,
+    },
+    {
+      id: 3,
+      title: "Movimientos",
+      cName: "nav-item",
+      icon: <FontAwesomeIcon icon={faFileAlt} size="2x" style={{ marginRight: '8px' }}/>,
     },
 
   ];
@@ -70,11 +76,20 @@ export const navItems = [
       path: "./ListaAsientos",
       cName: "submenu-item",
     },
-    {
-      id: '4', 
-      title: 'Movimientos contables por cuenta',
-      path: '/ContabilidadCuenta',
-      cName: 'nav-text' 
-    },
+    // {
+    //   id: '4', 
+    //   title: 'Movimientos contables por cuenta',
+    //   path: '/ContabilidadCuenta',
+    //   cName: 'nav-text' 
+    // },
+  ];
+  
+    export const movimientosDropdown = [
+      {
+        id: '1', 
+        title: 'Reporte',
+        path: '/ContabilidadCuenta',
+        cName: 'nav-text' 
+      },
    
   ];

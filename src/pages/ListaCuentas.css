@@ -8,3 +8,15 @@
     padding: 20px;
     
 }
+
+.div-colum-address{
+    display: flex;
+}
+
+.btn-copy{
+    margin-left: 5px;
+}
+
+.link-ether{
+    
+}
