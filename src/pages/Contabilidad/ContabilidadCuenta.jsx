@@ -5,7 +5,7 @@ import useEntryApi from '../../hooks/useEntryApi';
 
 const ContabilidadCuenta = (props) => {
 
-  const { getAccountByAddress, name, balance, type, selectAccount, contract, isLoading, error } = useAccounts();
+  const { getAccountByAddress, name, balance, type, selectAccount, contract, isLoadingEntry, error } = useAccounts();
   const { getEntries, entries } = useEntryApi();
 
   const [records, setRecords] = useState([]);
@@ -21,7 +21,7 @@ const ContabilidadCuenta = (props) => {
 
   useEffect(() => {
     // Cuando se tenga la cuenta y las entradas, procesa las entradas
-    if(!isLoading && entries) {
+    if(!isLoadingEntry && entries) {
       const processedEntries = entries.reduce((acc, entry) => {
         
         let record = {
@@ -49,11 +49,11 @@ const ContabilidadCuenta = (props) => {
   
       setRecords(processedEntries);
     }
-  }, [isLoading, entries, contract]);
+  }, [isLoadingEntry, entries, contract]);
 
-  if(isLoading) {
-    return <div>Cargando...</div>;
-  }
+  if(isLoadingEntry) {
+     return <div>Cargando...</div>;
+   }
 
   if(error) {
     return <div>Error al cargar la cuenta: {error.message}</div>;

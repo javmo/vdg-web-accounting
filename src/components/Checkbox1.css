@@ -56,6 +56,10 @@
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
   }
+
+.checkbox-option-result{
+  display: flex;
+}
   
 @media screen and (max-width:480px) {
 

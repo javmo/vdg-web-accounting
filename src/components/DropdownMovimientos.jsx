@@ -3,7 +3,7 @@ import { movimientosDropdown } from "./NavItems";
 import { Link } from "react-router-dom";
 import "./DropdownMovimientos.css";
 
-function DropdownMovimientos() {
+function DropdownMovimientos({toogleMenu}) {
   const [dropdownMovimientos, setDropdownMovimientos] = useState(false);
 
   return (
@@ -18,7 +18,10 @@ function DropdownMovimientos() {
               <Link
                 to={item.path}
                 className={item.cName}
-                onClick={() => setDropdownMovimientos(false)}
+                onClick={() => {
+                  toogleMenu();
+                  setDropdownMovimientos(false)
+                }}
               >
                 {item.title}
               </Link>

@@ -39,10 +39,12 @@
     padding: 16px;
   }
 
-  @media screen and (max-width:480px) {
+  @media screen and (max-width:1000px) {
 
     .asientos-submenu {
-      top: 223px;
-      right: 50px;
-     }
+      position: absolute;
+      z-index: 1;
+      top: 111px;
+      left: 120px;
+    }
   }

@@ -31,10 +31,12 @@
     padding: 16px;
   }
 
-  @media screen and (max-width:480px) {
+  @media screen and (max-width:1000px) {
 
     .cuentas-submenu {
-      top: 170px;
-      right: 50px;
+      position: absolute;
+      z-index: 1;
+      top: 56px;
+      left: 120px;
     }
   }
