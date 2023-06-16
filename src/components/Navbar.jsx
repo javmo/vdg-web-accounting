@@ -8,7 +8,7 @@ import WalletConnections from "../wallet/WalletConnection"
 import Dropdown from "./Dropdown";
 import DropdownAsientos from "./DropdownAsientos";
 import setDropdownMovimientos from "./DropdownMovimientos";
-import logo4dinos from '../assets/images/dinos11.png'
+import logo4dinos2 from '../assets/images/dinos11.png'
 import DropdownMovimientos from "./DropdownMovimientos";
 
 
@@ -41,7 +41,7 @@ function Navbar() {
     <>
     <header className="Cabecera">
         <Link to="/" className="navbar-logo">
-           <img src={logo4dinos} alt='Bienvenidos' className="navbar-src-logo"/>
+           <img src={logo4dinos2} alt='Bienvenidos' className="navbar-src-logo"/>
         </Link>
         <button onClick={toogleMenu} className="navbar-button">
           <svg className="navbar-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
