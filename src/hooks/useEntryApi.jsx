@@ -4,12 +4,12 @@ import axios from 'axios';
 const useEntryApi = () => {
   const [entries, setEntries] = useState([]);
   const [entry, setEntry] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingEntry, setIsLoadingEntry] = useState(false);
   const [error, setError] = useState(null);
   
 
    const getEntries = async () => {
-       setIsLoading(true);
+    setIsLoadingEntry(true);
        try {
          const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/entry`);
          setEntries(response.data);
@@ -17,11 +17,11 @@ const useEntryApi = () => {
        } catch (error) {
          setError(error);
        }
-       setIsLoading(false);
+       setIsLoadingEntry(false);
      };
 
      const getEntry = async (contract) => {
-        setIsLoading(true);
+      setIsLoadingEntry(true);
         try {
           const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/entry/contract/${contract}`);
           setEntry(response.data);
@@ -29,13 +29,13 @@ const useEntryApi = () => {
         } catch (error) {
           setError(error);
         }
-        setIsLoading(false);
+        setIsLoadingEntry(false);
       };
     
 
   return { 
     entries,
-    isLoading,
+    isLoadingEntry,
     error, 
     entry,
     getEntry,

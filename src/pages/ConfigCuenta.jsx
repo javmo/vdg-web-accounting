@@ -5,6 +5,7 @@ import Checkbox from '../components/Checkbox1';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const CrearCuenta = (props) => {
 
@@ -13,6 +14,8 @@ const CrearCuenta = (props) => {
     const [activos, setActivos] = useState(false);
     const [pasivos, setPasivos] = useState(false);
     const [resultado, setResultado] = useState(false);
+    const [beneficio, setBeneficio] = useState(false);
+    const [gasto, setGasto] = useState(false);
     const navigate = useNavigate();
 
 
@@ -20,6 +23,7 @@ const CrearCuenta = (props) => {
     const [formData, setFormData] = useState({
         name: '',
         owner: props.wallet,
+        isExpense: false,
     });
 
     //Obtencion de check seleccionado
@@ -29,18 +33,36 @@ const CrearCuenta = (props) => {
           setActivos(true);
           setPasivos(false);
           setResultado(false);
+          setBeneficio(false);
+          setGasto(false);
+          setFormData({ ...formData, isExpense: false });
         } else if (checkboxName === 'Pasivos' && isChecked) {
           setActivos(false);
           setPasivos(true);
           setResultado(false);
+          setBeneficio(false);
+          setGasto(false);
+          setFormData({ ...formData, isExpense: false });
         } else if (checkboxName === 'Resultado' && isChecked) {
           setActivos(false);
           setPasivos(false);
           setResultado(true);
+            if(checkboxName ==='Beneficio' && isChecked){
+                setBeneficio(true);
+                setGasto(false);
+                setFormData({ ...formData, isExpense: false });
+            }else if(checkboxName ==='Gasto' && isChecked){
+                setGasto(true);
+                setBeneficio(false);
+                setFormData({ ...formData, isExpense: true });
+            }
         } else {
           setActivos(false);
           setPasivos(false);
           setResultado(false);
+          setBeneficio(false);
+          setGasto(false);
+          setFormData({ ...formData, isExpense: false });
         }
     };
     

@@ -52,10 +52,10 @@ const useAccountsApi = () => {
     }
   };
 
-  const addResultAccount = async ({ name, owner }) => {
+  const addResultAccount = async ({ name, owner, isExpense }) => {
     setIsLoading(true);
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/addResultAccount`, { name, owner });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/account/addResultAccount`, { name, owner, isExpense });
       setIsLoading(false);
       //console.log("response.data: " + response.data)
       return response.data; // Devuelve la información de la transacción
@@ -73,14 +73,17 @@ const useAccountsApi = () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/account/address/${address}`);
       const { name, balance, type, account, contract } = response.data;
+      console.log("name hook: " + name)
       setName(name);
       setBalance(balance);
       setType(type);
       setAccount(account);
       setContract(contract);
+      return response.data;
       console.log("response try:" + response)
     } catch (error) {
       console.log("response error: " + error)
+      setName('No existe');
       setError(error);
       setIsLoading(false);
       throw error;

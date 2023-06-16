@@ -3,7 +3,7 @@ import { asientosDropdown } from "./NavItems";
 import { Link } from "react-router-dom";
 import "./DropdownAsientos.css";
 
-function DropdownAientos() {
+function DropdownAientos({toogleMenu}) {
   const [dropdownAientos, setDropdownAsientos] = useState(false);
 
   return (
@@ -18,7 +18,10 @@ function DropdownAientos() {
               <Link
                 to={item.path}
                 className={item.cName}
-                onClick={() => setDropdownAsientos(false)}
+                onClick={() => {
+                  toogleMenu();
+                  setDropdownAsientos(false)
+                }}
               >
                 {item.title}
               </Link>

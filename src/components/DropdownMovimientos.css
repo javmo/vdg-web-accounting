@@ -1,4 +1,4 @@
-.asientos-submenu {
+.movimientos-submenu {
     width: 10rem;
     position: absolute;
     top: 62px;
@@ -7,18 +7,18 @@
     z-index: 1;
   }
   
-  .asientos-submenu li {
+  .movimientos-submenu li {
     background: rgb(10, 8, 124);
     cursor: pointer;
 
   }
   
-  .asientos-submenu li a:hover {
+  .movimientos-submenu li a:hover {
     background:  rgb(3, 21, 59);
     width: 100%;
   }
   
-  .asientos-submenu li a{
+  .movimientos-submenu li a{
     text-decoration: none;
     color: white;
     font-size: 1.1rem;
@@ -26,11 +26,11 @@
     padding: 6px 16px;
     border-radius: 5px;
   }
-  .asientos-submenu.clicked {
+  .movimientos-submenu.clicked {
     display: none;
   }
   
-  .asientos-item {
+  .movimientos-item {
     display: block;
     width: 100%;
     height: 100%;
@@ -41,10 +41,10 @@
 
   @media screen and (max-width:1000px) {
 
-    .asientos-submenu {
+    .movimientos-submenu {
       position: absolute;
       z-index: 1;
-      top: 111px;
+      top: 165px;
       left: 120px;
-    }
+     }
   }

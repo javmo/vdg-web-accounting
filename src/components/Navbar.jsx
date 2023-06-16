@@ -7,13 +7,16 @@ import Button from "./Button";
 import WalletConnections from "../wallet/WalletConnection"
 import Dropdown from "./Dropdown";
 import DropdownAsientos from "./DropdownAsientos";
+import setDropdownMovimientos from "./DropdownMovimientos";
 import logo4dinos from '../assets/images/dinos11.png'
+import DropdownMovimientos from "./DropdownMovimientos";
 
 
 
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
   const [dropdownAsientos, setDropdownAsientos] = useState(false);
+  const [dropdownMovimientos, setDropdownMovimientos] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [menu, setMenu] = useState(false)
 
@@ -71,7 +74,7 @@ function Navbar() {
                       <Link to={item.path} title="Configuracion de la cuenta">{item.icon}</Link>
                     )}
                     
-                    {dropdown && <Dropdown />}
+                    {dropdown && <Dropdown toogleMenu={toogleMenu} />}
                 </li>
               );
             }
@@ -91,7 +94,27 @@ function Navbar() {
                       // Mostrar el icono en pantallas más grandes
                       <Link to={item.path} title="Configuracion de los asientos" >{item.icon}</Link>
                     )}
-                  {dropdownAsientos && <DropdownAsientos />}
+                  {dropdownAsientos && <DropdownAsientos toogleMenu={toogleMenu}/>}
+                </li>
+              );
+            }
+            if (item.title === "Movimientos") {
+              return (
+                <li
+                key={item.id}
+                className={item.cName}
+                onMouseEnter={() => setDropdownMovimientos(true)}
+                onMouseLeave={() => setDropdownMovimientos(false)}
+                >
+                  {/* <Link to={item.path}>{item.icon}</Link> */}
+                  {isMobile ? (
+                      // Mostrar el título en dispositivos móviles
+                      <Link to={item.path} title="Reporte contable" >{item.title}</Link>
+                    ) : (
+                      // Mostrar el icono en pantallas más grandes
+                      <Link to={item.path} title="Reporte contable" >{item.icon}</Link>
+                    )}
+                  {dropdownMovimientos && <DropdownMovimientos toogleMenu={toogleMenu}/>}
                 </li>
               );
             }
@@ -101,20 +124,9 @@ function Navbar() {
               </li>
             );
           })}
-                {/* <li>
-                  <div>
-                    <WalletConnections/>
-                  </div>
-                </li> */}
          </ul>
-       
-        {/* <Button /> */}
-       
-      </nav>
+        </nav>
       </header>
-      
-        {/* <Wallet/> */}
-      
    </> 
     
   );

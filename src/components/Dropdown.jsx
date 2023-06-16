@@ -3,7 +3,7 @@ import { cuentasDropdown } from "./NavItems";
 import { Link } from "react-router-dom";
 import "./Dropdown.css";
 
-function Dropdown() {
+function Dropdown({toogleMenu}) {
   const [dropdown, setDropdown] = useState(false);
 
   return (
@@ -18,7 +18,10 @@ function Dropdown() {
               <Link
                 to={item.path}
                 className={item.cName}
-                onClick={() => setDropdown(false)}
+                onClick={() => {
+                  toogleMenu();
+                  setDropdown(false)
+                }}
               >
                 {item.title}
               </Link>

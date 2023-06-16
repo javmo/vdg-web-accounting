@@ -1,5 +1,6 @@
 import { useState, useEffect} from 'react';
 import useAsientos from '../../hooks/AsientoHooks';
+import useAccounts from '../../hooks/CuentaHooks';
 import './ConfigAsiento.css'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,22 +10,39 @@ const ConfigAsiento = (props) => {
 
     console.log("wallet configurar Cuenta: " + props.wallet);
     const { addConfigAsiento, fetchData, asientos, isLoading, error} = useAsientos();
-    const navigate = useNavigate();
+    const { getAccountByAddress} = useAccounts();
+    const [accountResult, setAccountResult] = useState([]);
+    
+    const handleGetAccountAndEntry = async () => {
+        const response = await getAccountByAddress(props.wallet);
+        setAccountResult(response);
+        
+        console.log("respueta cuentassssss11!!!!!!!:", accountResult.contract);
+        
+    };
 
     useEffect(() => {
       fetchData();
-      console.log("asientos: " + asientos)
+      handleGetAccountAndEntry();
     }, []);
 
+    useEffect(() => {
+        if (accountResult) {
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            accountContract: accountResult.contract,
+          }));
+        }
+      }, [accountResult])
 
+    console.log("props.contract: " + props);
     //Se completa el formulario con datos segun el estado de los input
     const [formData, setFormData] = useState({
         configurationContract: '',
-        accountContract: props.wallet,
+        accountContract: accountResult.contract,
         isCredit: false,
         owner: props.wallet,
     });
-    
     //ejecucion de post
     const handleSubmit = async (event) => {
         
@@ -42,7 +60,18 @@ const ConfigAsiento = (props) => {
       
     //obtengo cambios en el formulario
     const handleChange = (event) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        // if (event.target.name === "configurationContract") {
+        //     const selectedAsiento = asientos.find((asiento) => asiento.contract === event.target.value);
+        //     setFormData({ ...formData, [event.target.name]: event.target.value, accountContract: selectedAsiento ? selectedAsiento.contract : '' });
+        //   } else {
+        //     setFormData({ ...formData, [event.target.name]: event.target.value });
+        //   }
+
+          if (event.target.name === 'configurationContract') {
+            setFormData({ ...formData, configurationContract: event.target.value });
+          } else {
+            setFormData({ ...formData, [event.target.name]: event.target.value });
+        }
       };
 
     //////////////////////////////////////////
@@ -80,7 +109,7 @@ const ConfigAsiento = (props) => {
         
                 </select>
             </div>
-               
+        
                 <button className='form-button' type="submit" onClick={handleSubmit}>Guardar</button>
 
             </form>
