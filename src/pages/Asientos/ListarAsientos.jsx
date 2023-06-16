@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
 const ListaAsientos =() => {
   
   const etherscanLink = 'https://sepolia.etherscan.io/address/';
-  const swaggerPost= 'http://localhost:4000/api-docs/#/entry/post_api_entry__configurationContract_'
+  //const swaggerPost= 'http://localhost:4000/api-docs/#/entry/post_api_entry__configurationContract_'
+  const swaggerPost= process.env.REACT_APP_API_URL+'/api-docs/#/entry/post_api_entry__configurationContract_'
   const { asientos, isLoading, error, fetchData } = useAsientos();
 
   useEffect(() => {
