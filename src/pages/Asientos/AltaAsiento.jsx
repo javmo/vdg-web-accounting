@@ -50,7 +50,7 @@ const AltaAsiento = (props) => {
 
         <div className='div-form'>
 
-            <h5>Nueva parametria contable</h5>
+            <h5>Nueva parametría contable</h5>
             <form className='form-box' onSubmit={handleSubmit}>
 
                 <input  className='form-input'
