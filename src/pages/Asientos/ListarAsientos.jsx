@@ -118,7 +118,7 @@ const ListaAsientos =() => {
   return(
     <div className='container-table'>
       
-      <h5>Listado de cuenta configuradas</h5>
+      <h5>Listado de asientos configuradas</h5>
 
       <DataTable className='dataTable'
           columns={columns}
