@@ -82,7 +82,7 @@ const ListaCuentas =() => {
   return(
     <div className='container-table'>
       
-      <h5>Listado de cuenta configuradas</h5>
+      <h5>Listado de cuentas configuradas</h5>
 
       <DataTable className='dataTable'
           columns={columns}

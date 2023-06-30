@@ -79,7 +79,7 @@ const ConfigAsiento = (props) => {
 
         <div className='div-form'>
 
-            <h5>Configuracion de asiento</h5>
+            <h5>Configuración de asiento</h5>
             <form className='form-box' onSubmit={handleSubmit}>
             <div className="form-item">
                 <span className="form-label">Asiento:</span>
